@@ -16,6 +16,7 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+    private CakeModel cake;
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -62,6 +63,7 @@ public class CakeView extends SurfaceView {
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
+        cake = new CakeModel();
     }
 
     /**
@@ -72,14 +74,15 @@ public class CakeView extends SurfaceView {
         canvas.drawRect(left, bottom - candleHeight, left + candleWidth, bottom, candlePaint);
 
         //draw the outer flame
-        float flameCenterX = left + candleWidth/2;
-        float flameCenterY = bottom - wickHeight - candleHeight - outerFlameRadius/3;
-        canvas.drawCircle(flameCenterX, flameCenterY, outerFlameRadius, outerFlamePaint);
+        if(cake.lit) {
+            float flameCenterX = left + candleWidth / 2;
+            float flameCenterY = bottom - wickHeight - candleHeight - outerFlameRadius / 3;
+            canvas.drawCircle(flameCenterX, flameCenterY, outerFlameRadius, outerFlamePaint);
 
-        //draw the inner flame
-        flameCenterY += outerFlameRadius/3;
-        canvas.drawCircle(flameCenterX, flameCenterY, innerFlameRadius, innerFlamePaint);
-
+            //draw the inner flame
+            flameCenterY += outerFlameRadius / 3;
+            canvas.drawCircle(flameCenterX, flameCenterY, innerFlameRadius, innerFlamePaint);
+        }
         //draw the wick
         float wickLeft = left + candleWidth/2 - wickWidth/2;
         float wickTop = bottom - wickHeight - candleHeight;
@@ -94,6 +97,10 @@ public class CakeView extends SurfaceView {
      *
      * This method will draw a birthday cake
      */
+
+    public CakeModel getCake(){
+        return cake;
+    }
     @Override
     public void onDraw(Canvas canvas)
     {
@@ -121,9 +128,19 @@ public class CakeView extends SurfaceView {
 
         //Now a candle in the center
         //drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
-        drawCandle(canvas, cakeLeft + cakeWidth*3/4, cakeTop);
-        drawCandle(canvas, cakeLeft + cakeWidth/4 , cakeTop);
+        if (cake.candles) {
+            int[] candCor = new int[5];
+            candCor[0] = 7;
+            candCor[1] = 5;
+            candCor[2] = 9;
+            candCor[3] = 3;
+            candCor[4] = 11;
 
+            for(int i =0; i<cake.numCandles; i++){
+
+                drawCandle(canvas, cakeLeft + cakeWidth *  candCor[i]/ 14, cakeTop);
+            }
+        }
     }//onDraw
 
 }//class CakeView
