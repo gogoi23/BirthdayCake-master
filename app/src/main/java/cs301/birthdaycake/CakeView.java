@@ -29,7 +29,7 @@ public class CakeView extends SurfaceView {
     public static final float layerHeight = 200.0f;
     public static final float frostHeight = 50.0f;
     public static final float candleHeight = 300.0f;
-    public static final float candleWidth = 40.0f;
+    public static final float candleWidth = 79.0f;
     public static final float wickHeight = 30.0f;
     public static final float wickWidth = 6.0f;
     public static final float outerFlameRadius = 30.0f;
@@ -84,7 +84,7 @@ public class CakeView extends SurfaceView {
             canvas.drawCircle(flameCenterX, flameCenterY, innerFlameRadius, innerFlamePaint);
         }
         //draw the wick
-        float wickLeft = left + candleWidth/2 - wickWidth/2;
+        float wickLeft = left + (candleWidth)/2 - (wickWidth)/2;
         float wickTop = bottom - wickHeight - candleHeight;
         canvas.drawRect(wickLeft, wickTop, wickLeft + wickWidth, wickTop + wickHeight, wickPaint);
 
