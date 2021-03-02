@@ -5,9 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
+import android.view.View;
 
-public class CakeView extends SurfaceView {
+public class CakeView extends SurfaceView{ //implements View.OnTouchListener{// implements  View.OnTouchListener{
 
     /* These are the paints we'll use to draw the birthday cake below */
     Paint cakePaint = new Paint();
@@ -34,8 +36,6 @@ public class CakeView extends SurfaceView {
     public static final float wickWidth = 6.0f;
     public static final float outerFlameRadius = 30.0f;
     public static final float innerFlameRadius = 15.0f;
-
-
 
     /**
      * ctor must be overridden here as per standard Java inheritance practice.  We need it
@@ -141,7 +141,24 @@ public class CakeView extends SurfaceView {
                 drawCandle(canvas, cakeLeft + cakeWidth *  candCor[i]/ 14, cakeTop);
             }
         }
-    }//onDraw
 
-}//class CakeView
+        drawBalloon(canvas);
+
+
+    }//onDraw
+    public void drawBalloon(Canvas canvas){
+        if (cake.isBalloon){
+            Paint balloonColor = new Paint();
+            balloonColor.setColor(0xFFff002b);
+            Paint stringColor = new Paint();
+            stringColor.setColor(0xFF000000);
+            canvas.drawRect((cake.balloonx-2),(cake.balloony+50),(cake.balloonx+2),(cake.balloony+150),stringColor);
+            canvas.drawOval( (cake.balloonx-30),(cake.balloony+50),(cake.balloonx+30),(cake.balloony-50),balloonColor);
+
+        }
+    }
+
+}
+
+//class CakeView
 

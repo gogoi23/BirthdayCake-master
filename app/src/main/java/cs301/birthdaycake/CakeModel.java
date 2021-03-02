@@ -12,8 +12,4 @@ public class CakeModel {
     float balloony = -1;
     boolean isBalloon =false;
 
-    float xtouch = 0;
-    float ytouch = 0;
-    boolean showCord = false;
-
 }
