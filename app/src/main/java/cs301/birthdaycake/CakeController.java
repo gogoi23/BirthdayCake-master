@@ -58,10 +58,14 @@ SeekBar.OnSeekBarChangeListener, View.OnTouchListener
         cakeV.getCake().showCord = true;
         cakeV.getCake().xtouch = event.getX();
         cakeV.getCake().ytouch = event.getY();
+        cakeV.getCake().isBalloon = true;
+        cakeV.getCake().balloonx = event.getX();
+        cakeV.getCake().balloony = event.getY();
         cakeV.invalidate();
 
 
         return true;
     }
+
 
 }

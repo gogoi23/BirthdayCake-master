@@ -9,8 +9,4 @@ public class CakeModel {
     public boolean frosting=true;
     public boolean candles =true;
 
-    float xtouch = 0;
-    float ytouch = 0;
-    boolean showCord = false;
-
 }
