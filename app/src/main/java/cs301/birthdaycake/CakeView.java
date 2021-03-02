@@ -4,10 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
+import android.view.View;
 
-public class CakeView extends SurfaceView {
+public class CakeView extends SurfaceView implements View.OnTouchListener{
 
     /* These are the paints we'll use to draw the birthday cake below */
     Paint cakePaint = new Paint();
@@ -140,8 +143,23 @@ public class CakeView extends SurfaceView {
 
                 drawCandle(canvas, cakeLeft + cakeWidth *  candCor[i]/ 14, cakeTop);
             }
+
+
         }
+        if(cake.showCord){
+            Paint paint = new Paint();
+            int tmp = Color.rgb(255,0,0);
+            paint.setColor(tmp);
+            paint.setTextSize(120);
+            canvas.drawText((getCake().xtouch + ", " + getCake().ytouch) ,1350,800, paint);
+        }
+
     }//onDraw
 
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return false;
+    }
 }//class CakeView
 
