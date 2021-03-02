@@ -146,10 +146,6 @@ public class CakeView extends SurfaceView implements View.OnTouchListener{
 
 
         }
-
-        drawBalloon(canvas);
-
-
         if(cake.showCord){
             Paint paint = new Paint();
             int tmp = Color.rgb(255,0,0);
@@ -159,17 +155,6 @@ public class CakeView extends SurfaceView implements View.OnTouchListener{
         }
 
     }//onDraw
-    public void drawBalloon(Canvas canvas){
-        if (cake.isBalloon){
-            Paint balloonColor = new Paint();
-            balloonColor.setColor(0xFFff002b);
-            Paint stringColor = new Paint();
-            stringColor.setColor(0xFF000000);
-            canvas.drawRect((cake.balloonx-2),(cake.balloony+50),(cake.balloonx+2),(cake.balloony+150),stringColor);
-            canvas.drawOval( (cake.balloonx-30),(cake.balloony+50),(cake.balloonx+30),(cake.balloony-50),balloonColor);
-
-        }
-    }
 
 
     @Override
@@ -177,7 +162,4 @@ public class CakeView extends SurfaceView implements View.OnTouchListener{
         return false;
     }
 }//class CakeView
-}
-
-//class CakeView
 
