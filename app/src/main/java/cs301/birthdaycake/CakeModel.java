@@ -8,5 +8,8 @@ public class CakeModel {
     public int numCandles=2;
     public boolean frosting=true;
     public boolean candles =true;
+    float balloonx = -1;
+    float balloony = -1;
+    boolean isBalloon =false;
 
 }
