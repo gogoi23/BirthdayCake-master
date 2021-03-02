@@ -143,18 +143,31 @@ public class CakeView extends SurfaceView implements View.OnTouchListener{
 
                 drawCandle(canvas, cakeLeft + cakeWidth *  candCor[i]/ 14, cakeTop);
             }
-
-
         }
+
+        drawBalloon(canvas);
+
+
         if(cake.showCord){
             Paint paint = new Paint();
             int tmp = Color.rgb(255,0,0);
             paint.setColor(tmp);
             paint.setTextSize(120);
-            canvas.drawText((getCake().xtouch + ", " + getCake().ytouch) ,1350,800, paint);
+            canvas.drawText((getCake().xtouch + ", " + getCake().ytouch) ,1200,700, paint);
         }
 
     }//onDraw
+    public void drawBalloon(Canvas canvas){
+        if (cake.isBalloon){
+            Paint balloonColor = new Paint();
+            balloonColor.setColor(0xFFff002b);
+            Paint stringColor = new Paint();
+            stringColor.setColor(0xFF000000);
+            canvas.drawRect((cake.balloonx-2),(cake.balloony+50),(cake.balloonx+2),(cake.balloony+150),stringColor);
+            canvas.drawOval( (cake.balloonx-30),(cake.balloony+50),(cake.balloonx+30),(cake.balloony-50),balloonColor);
+
+        }
+    }
 
 
     @Override
@@ -162,4 +175,7 @@ public class CakeView extends SurfaceView implements View.OnTouchListener{
         return false;
     }
 }//class CakeView
+
+
+//class CakeView
 

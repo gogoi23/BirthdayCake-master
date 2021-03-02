@@ -55,6 +55,9 @@ SeekBar.OnSeekBarChangeListener, View.OnTouchListener
     public void 	onStopTrackingTouch(SeekBar seekBar){}
 
     public boolean onTouch(View v, MotionEvent event) {
+        cakeV.getCake().isBalloon = true;
+        cakeV.getCake().balloonx = event.getX();
+        cakeV.getCake().balloony = event.getY();
         cakeV.getCake().showCord = true;
         cakeV.getCake().xtouch = event.getX();
         cakeV.getCake().ytouch = event.getY();
@@ -63,5 +66,6 @@ SeekBar.OnSeekBarChangeListener, View.OnTouchListener
 
         return true;
     }
+
 
 }
